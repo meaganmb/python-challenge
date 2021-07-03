@@ -2,7 +2,7 @@ import os
 import csv
 
 csvfile = "PyBank/Resources/budget_data.csv"
-# textfile = "python-challenge/PyBank/analysis/budget_analysis.txt"
+textfile = "PyBank/analysis/budget_analysis.txt"
 
 counter = 0
 previous_values = 0
@@ -22,15 +22,46 @@ with open(csvfile) as csv_file:
         counter += 1
         current_values = current_values + int(row[1])
         months.append(row[0])
-# print(counter)
-# print(current_values)
+        # print(counter)
+        # print(current_values)
+        # print(months)
 
-            if row[0] == "Jan-2010":
-                previous_values = (int(row[1]))
+        if row[0] == "Jan-2010":
+            previous_values = (int(row[1]))
+        else:
+            diff_values.append(int(row[1]) - previous_values)
+        
+        previous_values = (int(row[1]))
 
-            else:
-                diff_values.append(int(row[1]) - previous_values)
-        # previous_values = (int(row[1]))
-            print(diff_values)
-        # def bank_test():
-        # total_difference_list = []
+        # print(diff_values)
+
+    average = sum(diff_values) / (len(months) - 1)
+    round_average = round(average, 2)
+    print(round_average)
+    min_diff = min(diff_values)
+    max_diff = max(diff_values)
+    print(min_diff)
+    print(max_diff)
+
+    # find month of greatest decrease
+    min_index = diff_values.index(min_diff)
+    print(min_index)
+    min_month = months[(min_index + 1)]
+    print(min_month)
+
+    # find month of greatest increase
+    max_index = diff_values.index(max_diff)
+    print(max_index)
+    max_month = months[(max_index + 1)]
+    print(max_month)
+
+
+# open file in w (write) mode
+with open(textfile, "w") as text_file:
+    text_file.write("Financial Analysis\n"
+                    "----------------------------\n"
+                    f"Total Months: {counter}\n"
+                    "Total: {current_values}\n"
+                    "Average Change: ${round_average}\n"
+                    "Greatest Increase in Profits: {max_month} (${max_diff})\n"
+                    "Greatest Decrease in Profits: {min_month} (${min_diff})\n")

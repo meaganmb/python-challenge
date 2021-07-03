@@ -1,0 +1,7 @@
+Financial Analysis
+----------------------------
+Total Months: 86
+Total: {current_values}
+Average Change: ${round_average}
+Greatest Increase in Profits: {max_month} (${max_diff})
+Greatest Decrease in Profits: {min_month} (${min_diff})
