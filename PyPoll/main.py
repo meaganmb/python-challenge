@@ -46,4 +46,5 @@ with open(textfile, "w") as text_file:
     # text_file.write(f"{i}: {all_candidates[i]}")
 #print([i],all_candidates[i]) (dictionary value for each candidate)
     text_file.write("--------------------\n"
+                    "Winner:\n"
                     "--------------------\n")
