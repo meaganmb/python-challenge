@@ -30,7 +30,6 @@ with open(csvfile) as csv_file:
         
         previous_values = (int(row[1]))
 
-        # print(diff_values)
     # Calculating average, minimum profit and maximum profit
     average = sum(diff_values) / (len(months) - 1)
     round_average = round(average, 2)
