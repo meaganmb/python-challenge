@@ -51,7 +51,7 @@ with open(textfile, "w") as text_file:
     text_file.write("Financial Analysis\n"
                     "----------------------------\n"
                     f"Total Months: {counter}\n"
-                    f"Total: {current_values}\n"
+                    f"Total: ${current_values}\n"
                     f"Average Change: ${round_average}\n"
                     f"Greatest Increase in Profits: {max_month} (${max_diff})\n"
                     f"Greatest Decrease in Profits: {min_month} (${min_diff})\n")
