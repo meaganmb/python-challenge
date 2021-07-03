@@ -1,8 +1,8 @@
 import os
 import csv
 
-csvfile = "python-challenge/PyPoll/Resources/election_data.csv"
-textfile = "python-challenge/PyPoll/analysis/election_analysis.txt"
+csvfile = "PyPoll/Resources/election_data.csv"
+textfile = "PyPoll/analysis/election_analysis.txt"
 #textfile = os.path.join("analysis", "election_analysis.txt")
 
 counter = 0
@@ -26,8 +26,8 @@ with open(csvfile) as csv_file:
         else:
         # if not or else, add candidate to dictionary and set their total votes to 1 
             all_candidates[specific_candidate] = 1
-#print(all_candidates)
-
+# print(all_candidates)
+# print(all_candidates.values())
 # open file in w (write) mode
 with open(textfile, "w") as text_file:
     text_file.write("Election Results\n"
@@ -36,9 +36,14 @@ with open(textfile, "w") as text_file:
                     "--------------------\n")
     
     for i in all_candidates.keys():
-        print
+        percent = (all_candidates[i]/counter)*100
+        round_percent= round(percent, 3)
+        # all = print(f"{all_candidates[i]} {round_percent}%")
         # (all_candidates[i]/counter)*100
 
-    text_file.write(f"{i}: {all_candidates[i]}")
+    text_file.write(f"{i}: {all_candidates[i]} {round_percent}%\n")
+    #text_file.write(f"{i}: {all_candidates[i]}")
     # text_file.write(f"{i}: {all_candidates[i]}")
 #print([i],all_candidates[i]) (dictionary value for each candidate)
+    text_file.write("--------------------\n"
+                    "--------------------\n")
