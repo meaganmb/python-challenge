@@ -27,9 +27,11 @@ with open(csvfile) as csv_file:
         # if not or else, add candidate to dictionary and set their total votes to 1 
             all_candidates[specific_candidate] = 1
 print(all_candidates)
-max_vote = max(all_candidates.values())
+highest_vote = max(all_candidates.values())
 
-# print(max_vote)
+# highest_vote_key = getKeysByValue(all_candidates, highest_vote)
+
+# print(highest_vote)
 # print(all_candidates.values())
 # open file in w (write) mode
 with open(textfile, "w") as text_file:
@@ -50,5 +52,15 @@ with open(textfile, "w") as text_file:
     # text_file.write(f"{i}: {all_candidates[i]}")
 #print([i],all_candidates[i]) (dictionary value for each candidate)
     text_file.write("--------------------\n"
-                    "Winner:\n"
+
+        # def winner(max_vote): 
+        #     for winner in all_candidates.items(): 
+        #         if max_vote == max_vote: 
+        #             return text_file.write(f"Winner: {Winner}\n")
+    listOfKeys = [key  for (key, value) in all_candidates.items() if value == highest_vote]
+    
+    #Iterate over the list of keys
+    for key  in listOfKeys:
+        text_file.write(f"Winner: {key}\n")  
+                    # "Winner:\n"
                     "--------------------\n")
