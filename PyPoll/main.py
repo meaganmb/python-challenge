@@ -3,7 +3,6 @@ import csv
 
 csvfile = "PyPoll/Resources/election_data.csv"
 textfile = "PyPoll/analysis/election_analysis.txt"
-#textfile = os.path.join("analysis", "election_analysis.txt")
 
 counter = 0
 all_candidates = {}
@@ -27,40 +26,30 @@ with open(csvfile) as csv_file:
         # if not or else, add candidate to dictionary and set their total votes to 1 
             all_candidates[specific_candidate] = 1
 print(all_candidates)
+
+# finding the highest vote count in the poll
 highest_vote = max(all_candidates.values())
 
-# highest_vote_key = getKeysByValue(all_candidates, highest_vote)
-
-# print(highest_vote)
-# print(all_candidates.values())
 # open file in w (write) mode
 with open(textfile, "w") as text_file:
     text_file.write("Election Results\n"
                     "--------------------\n"
                     f"Total Votes: {counter}\n"
                     "--------------------\n")
-    
+# creating a for loop to show results of all candidates  
     for i in all_candidates.keys():
         percent = (all_candidates[i]/counter)*100
         round_percent= round(percent, 4)
         text_file.write(f"{i}: {round_percent}% ({all_candidates[i]})\n")
-        # all = print(f"{all_candidates[i]} {round_percent}%")
-        # (all_candidates[i]/counter)*100
+        text_file.write("--------------------\n"
 
-    # text_file.write(f"{i}: {all_candidates[i]} {round_percent}%\n") undo if doesn't work
-    #text_file.write(f"{i}: {all_candidates[i]}")
-    # text_file.write(f"{i}: {all_candidates[i]}")
-#print([i],all_candidates[i]) (dictionary value for each candidate)
-    text_file.write("--------------------\n"
-
-        # def winner(max_vote): 
-        #     for winner in all_candidates.items(): 
-        #         if max_vote == max_vote: 
-        #             return text_file.write(f"Winner: {Winner}\n")
-    listOfKeys = [key  for (key, value) in all_candidates.items() if value == highest_vote]
+        # attempting to find winner, i.e key of the highest value in all_candidates dictionary... not going so well
+        text_file.write(f"Winner:{all_candidates.keys(highest_vote)}\n"
+                        "--------------------")
     
-    #Iterate over the list of keys
-    for key  in listOfKeys:
-        text_file.write(f"Winner: {key}\n")  
-                    # "Winner:\n"
-                    "--------------------\n")
+    # listOfKeys = [key  for (key, value) in all_candidates.items() if value == highest_vote]
+    
+    # #Iterate over the list of keys
+    # for key  in listOfKeys:
+          
+                    
