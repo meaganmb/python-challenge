@@ -4,7 +4,9 @@ import csv
 csvfile = "PyPoll/Resources/election_data.csv"
 textfile = "PyPoll/analysis/election_analysis.txt"
 
+# creating counter to calculate total votes
 counter = 0
+#creating dictionary
 all_candidates = {}
 
 # Open and read csv
