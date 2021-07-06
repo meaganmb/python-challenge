@@ -25,31 +25,30 @@ with open(csvfile) as csv_file:
         else:
         # if not or else, add candidate to dictionary and set their total votes to 1 
             all_candidates[specific_candidate] = 1
-print(all_candidates)
 
 # finding the highest vote count in the poll
 highest_vote = max(all_candidates.values())
 
+# finding the winner
+candidates_list = list(all_candidates.keys())
+votes_list = list(all_candidates.values())
+
+winner = votes_list.index(highest_vote)
+
 # open file in w (write) mode
 with open(textfile, "w") as text_file:
     text_file.write("Election Results\n"
-                    "--------------------\n"
+                    "-----------------------\n"
                     f"Total Votes: {counter}\n"
-                    "--------------------\n")
+                    "-----------------------\n")
 # creating a for loop to show results of all candidates  
     for i in all_candidates.keys():
         percent = (all_candidates[i]/counter)*100
         round_percent= round(percent, 4)
         text_file.write(f"{i}: {round_percent}% ({all_candidates[i]})\n")
-        text_file.write("--------------------\n"
-
-        # attempting to find winner, i.e key of the highest value in all_candidates dictionary... not going so well
-        text_file.write(f"Winner:{all_candidates.keys(highest_vote)}\n"
-                        "--------------------")
-    
-    # listOfKeys = [key  for (key, value) in all_candidates.items() if value == highest_vote]
-    
-    # #Iterate over the list of keys
-    # for key  in listOfKeys:
+        # printing winner
+    text_file.write("-----------------------\n"
+                    f"Winner: {candidates_list[winner]}\n"
+                    "-----------------------")
           
                     
