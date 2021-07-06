@@ -40,6 +40,8 @@ with open(csvfile) as csv_file:
     min_index = diff_values.index(min_diff)
     min_month = months[(min_index + 1)]
 
+    # for month indexes we have to add 1 because if we take the difference of "n" items, we are left with "n - 1" differences
+
     # find month of greatest increase
     max_index = diff_values.index(max_diff)
     max_month = months[(max_index + 1)]
